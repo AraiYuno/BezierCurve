@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<button id = "Default">Default Rendering</button>
+<button id = "Wireframe">Reveal Wireframe</button>
+<button id = "IncSampleSize">+ Sample Size</button>
+<button id = "DecSampleSize">- Sample Size</button>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute  vec4 vPos;
+attribute  vec4 vNormal;
+varying vec4 fColor;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform float shininess;
+uniform vec4 ambPr, diffPr, specPr;
+uniform vec4 lightPos;
+uniform mat3 normalMatrix;
+
+void main() 
+{
+    vec3 pos = -(modelViewMatrix * vPos).xyz;
+    vec3 light = lightPos.xyz;
+    vec3 L = normalize( light - pos );
+    vec3 E = normalize( -pos );
+    vec3 H = normalize( L + E );
+    vec3 N = normalize( normalMatrix*vNormal.xyz);
+    float Kd = max( dot(L, N), 0.0 );
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    if( dot(L, N) < 0.0 ) 
+	    specular = vec4(0.0, 0.0, 0.0, 1.0);
+    gl_Position = projectionMatrix * modelViewMatrix * vPos;
+    fColor = ambPr + (Kd*diffPr) +(Ks * specPr;);
+    fColor.a = 0.8;    
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 fColor;
+void main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+<script type="text/javascript" src="../Helper/webgl-utils.js"></script>
+<script type="text/javascript" src="../Helper/initShaders.js"></script>
+<script type="text/javascript" src="../Helper/MV.js"></script>
+<script type="text/javascript" src="vertices.js"></script>
+<script type="text/javascript" src="indices.js"></script>
+<script type="text/javascript" src="bezier.js"></script>
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</html>

@@ -20,7 +20,13 @@
 -->
 
 <!DOCTYPE html>
+
 <html>
+<script type="text/javascript" src="../Helper/webgl-utils.js"></script>
+<script type="text/javascript" src="../Helper/initShaders.js"></script>
+<script type="text/javascript" src="../Helper/matrixVector.js"></script>
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript" src="bezier.js"></script>
 <button id = "Default">Bezier Curvature</button>
 <button id = "Wireframe">Wireframe</button>
 
@@ -52,6 +58,7 @@ void main()
 } 
 </script>
 
+
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
 varying vec4 fColor;
@@ -60,12 +67,6 @@ void main()
     gl_FragColor = fColor;
 }
 </script>
-<script type="text/javascript" src="../Helper/webgl-utils.js"></script>
-<script type="text/javascript" src="../Helper/initShaders.js"></script>
-<script type="text/javascript" src="../Helper/MV.js"></script>
-<script type="text/javascript" src="vertices.js"></script>
-<script type="text/javascript" src="indices.js"></script>
-<script type="text/javascript" src="bezier.js"></script>
 <body>
 <canvas id="gl-canvas" width="700" height="700">
 Your browser does not support HTML5.

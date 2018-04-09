@@ -1,3 +1,5 @@
+// Just uncomment the one that you want to use
+
 // Teapot
 var numPatches = 32;
 var indices = new Array(numPatches);

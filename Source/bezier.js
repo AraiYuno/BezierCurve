@@ -99,17 +99,12 @@ computeBezierPoints = function(){
             N = normalize(N);
             N[3] =  0;
             curvePoints.push(bezierPoints[i][j]);
-            normals.push(N);
             curvePoints.push(bezierPoints[i+1][j]);
-            normals.push(N);
             curvePoints.push(bezierPoints[i+1][j+1]);
-            normals.push(N);
             curvePoints.push(bezierPoints[i][j]);
-            normals.push(N);
             curvePoints.push(bezierPoints[i+1][j+1]);
-            normals.push(N);
             curvePoints.push(bezierPoints[i][j+1]);
-            normals.push(N);
+            normals.push(N); normals.push(N); normals.push(N); normals.push(N); normals.push(N); normals.push(N);
             curveIndex+= 6;
         }
     }
@@ -255,11 +250,19 @@ onload = function init()  {
     render();
 }
 
+
+//==============================================================================================
+// render
+//   basic WebGL rendering function. It's got a simple animation. The whole scene will rotate 
+//   both in x and y axis simultaneously.
+//
+//   Depending on which button user clicks, renderer will either render bezier curvature or wireframe.
+//==============================================================================================
 var render = function(){
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     // added an animation. The object will rotate both in x and y axis simultaneously.
-    theta[0] += 0.5;        
+    theta[0] += 0.3;        
     modelViewMatrix = mat4();
     modelViewMatrix = mult(modelViewMatrix, rotate(theta[0], [1, 0, 0]));  
     modelViewMatrix = mult(modelViewMatrix, rotate(theta[0], [0, 1, 0]));  

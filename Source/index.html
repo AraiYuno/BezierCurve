@@ -1,7 +1,28 @@
+<!--
+//===========================================================================================================
+// Author: Kyle Ahn
+//
+// Purpose: This program is implemented in order to render different objects by using Bezier Curves.
+//          This program calculates Bezier Curves by brute force method rather than de Casteljau method.
+//
+//          This program provides 2 buttons. 
+//             1.   Default Rendering: Renders the object by calculating the bezier curves.
+//             2.   Wireframe        : Renders the object by connecting the control points only.
+//
+//
+// INPUT FILE:
+//          Input files are vertices.js and indices.js in the "Source" directory. These contain the vertices
+//          of the object and indices of the object respectively.
+//        
+//          Currently, I have put just teapot and teaspoon. If you want to render teaspoon, just uncomment
+//          vertices and indices of teaspoon and these two files.
+//===========================================================================================================
+-->
+
 <!DOCTYPE html>
 <html>
-<button id = "Default">Default Rendering</button>
-<button id = "Wireframe">Reveal Wireframe</button>
+<button id = "Default">Bezier Curvature</button>
+<button id = "Wireframe">Wireframe</button>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
 attribute  vec4 vPos;

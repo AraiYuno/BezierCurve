@@ -2,8 +2,6 @@
 <html>
 <button id = "Default">Default Rendering</button>
 <button id = "Wireframe">Reveal Wireframe</button>
-<button id = "IncSampleSize">+ Sample Size</button>
-<button id = "DecSampleSize">- Sample Size</button>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
 attribute  vec4 vPos;
@@ -27,10 +25,8 @@ void main()
     vec3 N = normalize( normalMatrix*vNormal.xyz);
     float Kd = max( dot(L, N), 0.0 );
     float Ks = pow( max(dot(N, H), 0.0), shininess );
-    if( dot(L, N) < 0.0 ) 
-	    specular = vec4(0.0, 0.0, 0.0, 1.0);
     gl_Position = projectionMatrix * modelViewMatrix * vPos;
-    fColor = ambPr + (Kd*diffPr) +(Ks * specPr;);
+    fColor = ambPr + (Kd*diffPr) + (Ks * specPr);
     fColor.a = 0.8;    
 } 
 </script>
@@ -50,8 +46,8 @@ void main()
 <script type="text/javascript" src="indices.js"></script>
 <script type="text/javascript" src="bezier.js"></script>
 <body>
-<canvas id="gl-canvas" width="512" height="512">
-Oops ... your browser doesn't support the HTML5 canvas element
+<canvas id="gl-canvas" width="700" height="700">
+Your browser does not support HTML5.
 </canvas>
 </body>
 </html>

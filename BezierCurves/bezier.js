@@ -241,15 +241,15 @@ onload = function init()  {
         
         // Add Phong Illumination and Lighting for better ooking
         var lightPos = vec4(-10.0, -10.0, 10.0, 0.0 );
-        var lightDiffuse = vec4(1.0, 1.0, 1.0, 1.0), lightAmbient = vec4(0.2, 0.2, 0.2, 0.2), lightSpecular = vec4(1.0, 1.0, 1.0, 1.0);
-        var matAmbient = vec4(1.0, 1.0, 1.0, 1.0), matDiffuse = vec4(0.0, 0.8, 1.0, 1.0), matSpecualr = vec4(1.0, 1.0, 1.0, 1.0), matShininess = 125.0;
-        var diffPr = mult(lightDiffuse, matDiffuse), ambPr = mult(lightAmbient, matAmbient), specPr = mult(lightSpecular, matSpecualr);
+        var lightDiffuse = vec4(1.0, 1.0, 1.0, 1.0); lightAmbient = vec4(0.2, 0.2, 0.2, 0.2); lightSpecular = vec4(1.0, 1.0, 1.0, 1.0);
+        var matAmbient = vec4(1.0, 1.0, 1.0, 1.0); matDiffuse = vec4(0.0, 0.8, 1.0, 1.0); matSpecualr = vec4(1.0, 1.0, 1.0, 1.0); matShininess = 125.0;
+        var diffPr = mult(lightDiffuse, matDiffuse); ambPr = mult(lightAmbient, matAmbient); specPr = mult(lightSpecular, matSpecualr);
  
         gl.uniform4fv( gl.getUniformLocation(program, "specPr"), flatten(specPr));	
         gl.uniform4fv( gl.getUniformLocation(program, "lightPos"), flatten(lightPos));
         gl.uniform4fv( gl.getUniformLocation(program, "ambPr"), flatten(ambPr));
         gl.uniform4fv( gl.getUniformLocation(program, "diffPr"),  flatten(diffPr) );
-        gl.uniform1f( gl.getUniformLocation(program, "shininess"), materialShininess );
+        gl.uniform1f( gl.getUniformLocation(program, "shininess"), matShininess );
         normalMatrixLoc = gl.getUniformLocation( program, "normalMatrix" );
     };
     render();

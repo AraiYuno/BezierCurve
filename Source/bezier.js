@@ -200,12 +200,12 @@ onload = function init()  {
     document.getElementById("Wireframe").onclick = function(){
         // Typical OpenGL initialisation
         mode = false;
-        var vBufferId = gl.createBuffer();
-        gl.bindBuffer( gl.ARRAY_BUFFER, vBufferId );
+        var vBufferID = gl.createBuffer();
+        gl.bindBuffer( gl.ARRAY_BUFFER, vBufferID );
         gl.bufferData( gl.ARRAY_BUFFER, flatten(wireFrame), gl.STATIC_DRAW );
-        var vPosition = gl.getAttribLocation( program, "vPos" );
-        gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
-        gl.enableVertexAttribArray( vPosition );
+        var vPositionID = gl.getAttribLocation( program, "vPos" );
+        gl.vertexAttribPointer( vPositionID, 4, gl.FLOAT, false, 0, 0 );
+        gl.enableVertexAttribArray( vPositionID );
         projectionMatrix = ortho(-3, 3, -3, 3, -150, 150);
         gl.uniformMatrix4fv( gl.getUniformLocation(program, "projectionMatrix"), false, flatten(projectionMatrix));
     };
@@ -219,18 +219,18 @@ onload = function init()  {
     document.getElementById("Default").onclick = function(){
         // Typical OpenGL initialisation
         mode = true;
-        var vBuffer = gl.createBuffer();
-        gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer );
+        var vBufferID = gl.createBuffer();
+        gl.bindBuffer( gl.ARRAY_BUFFER, vBufferID );
         gl.bufferData( gl.ARRAY_BUFFER, flatten(curvePoints), gl.STATIC_DRAW );
-        var vPosition = gl.getAttribLocation( program, "vPos" );
-        gl.vertexAttribPointer( vPosition, 4, gl.FLOAT, false, 0, 0 );
-        gl.enableVertexAttribArray( vPosition );
-        var nBuffer = gl.createBuffer();
-        gl.bindBuffer( gl.ARRAY_BUFFER, nBuffer );
+        var vPositionID = gl.getAttribLocation( program, "vPos" );
+        gl.vertexAttribPointer( vPositionID, 4, gl.FLOAT, false, 0, 0 );
+        gl.enableVertexAttribArray( vPositionID );
+        var nBufferID = gl.createBuffer();
+        gl.bindBuffer( gl.ARRAY_BUFFER, nBufferID );
         gl.bufferData( gl.ARRAY_BUFFER, flatten(normals), gl.STATIC_DRAW );
-        var vNormal = gl.getAttribLocation( program, "vNormal" );
-        gl.vertexAttribPointer( vNormal, 4, gl.FLOAT, false, 0, 0 );
-        gl.enableVertexAttribArray( vNormal );
+        var vNormalID = gl.getAttribLocation( program, "vNormal" );
+        gl.vertexAttribPointer( vNormalID, 4, gl.FLOAT, false, 0, 0 );
+        gl.enableVertexAttribArray( vNormalID );
         projectionMatrix = ortho(-3, 3, -3, 3, -150, 150);
         gl.uniformMatrix4fv( gl.getUniformLocation(program, "projectionMatrix"), false, flatten(projectionMatrix));
         
